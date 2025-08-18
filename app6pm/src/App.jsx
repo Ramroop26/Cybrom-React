@@ -1,13 +1,22 @@
-import Comp1 from "./Comp1";
-import { useState } from "react";
-const App=()=>{
+import { useState, createContext } from "react";
 
-  const [user, setUser] =  useState("Ramroop");
-  return(
+import Bhopal from "./Bhopal";
+
+const myContext = createContext();
+
+const App = () => {
+  const [city, setCity] = useState("Ramroop");
+
+  return (
     <>
-    <h1>welcome tio cybrome! welcome: {user}</h1>
-    <Comp1 user={user}/>
+    <button onClick={()=>{}}></button>
+      <h1>welcome to : {city}</h1>
+      <myContext.Provider value={city}>
+        <Bhopal />
+      </myContext.Provider>
     </>
-  )
-}
+  );
+};
+
 export default App;
+export { myContext };

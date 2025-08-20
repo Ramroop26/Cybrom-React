@@ -2,21 +2,21 @@ import { useState, createContext } from "react";
 
 import Bhopal from "./Bhopal";
 
-const myContext = createContext();
+const MyContext = createContext();
 
 const App = () => {
   const [city, setCity] = useState("Ramroop");
 
   return (
     <>
-    <button onClick={()=>{}}></button>
+    <button onClick={()=>setCity("Ujjain")}>click me</button>
       <h1>welcome to : {city}</h1>
-      <myContext.Provider value={city}>
+      <MyContext.Provider value={{city, setCity}}>
         <Bhopal />
-      </myContext.Provider>
+      </MyContext.Provider>
     </>
   );
 };
 
 export default App;
-export { myContext };
+export{MyContext};

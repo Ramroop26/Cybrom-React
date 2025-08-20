@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { myContext } from "./App";
+import { MyContext } from "./App";
 const Jabalpur=()=>{
-    const{city, setCity} = useContext(myContext);
+    const {city, setCity} = useContext(MyContext);
     return(
         <>
         <h1>Welcome to Jabalpur: {city}</h1>
-        <button onClick={()=>{setCity("Gwalior")}}>Click here</button>
+        <button onClick={()=>setCity("Indore")}>click me</button>
         </>
     )
 }

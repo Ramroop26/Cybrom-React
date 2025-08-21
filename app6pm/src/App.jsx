@@ -1,22 +1,50 @@
-import { useState, createContext } from "react";
+// import { useState, createContext } from "react";
 
-import Bhopal from "./Bhopal";
+import Cybrom from "./Cybrom";
 
-const MyContext = createContext();
+// import Bhopal from "./Bhopal";
 
-const App = () => {
-  const [city, setCity] = useState("Ramroop");
+// const MyContext = createContext();
 
-  return (
+// const App = () => {
+//   const [city, setCity] = useState("Ramroop");
+
+//   return (
+//     <>
+//     <button onClick={()=>setCity("Ujjain")}>click me</button>
+//       <h1>welcome to : {city}</h1>
+//       <MyContext.Provider value={{city, setCity}}>
+//         <Bhopal />
+//       </MyContext.Provider>
+
+
+//     </>
+//   );
+// };
+
+// export default App;
+// export{MyContext};
+
+// import Cybrom1 from "./Cybrom1";
+
+// const App=()=>{
+//   return(
+//     <>
+//     <Cybrom1>
+//       <h1>welcome to cybrom</h1>
+//     </Cybrom1>
+//     </>
+//   )
+// }
+
+// export default App;
+
+const App=()=>{
+  return(
     <>
-    <button onClick={()=>setCity("Ujjain")}>click me</button>
-      <h1>welcome to : {city}</h1>
-      <MyContext.Provider value={{city, setCity}}>
-        <Bhopal />
-      </MyContext.Provider>
+    <h1>welcome to :</h1>
+    <Cybrom/>
     </>
-  );
-};
-
+  )
+}
 export default App;
-export{MyContext};

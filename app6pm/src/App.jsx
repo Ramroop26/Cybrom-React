@@ -1,6 +1,6 @@
 // import { useState, createContext } from "react";
 
-import Cybrom from "./Cybrom";
+// import Cybrom from "./Cybrom";
 
 // import Bhopal from "./Bhopal";
 
@@ -38,12 +38,72 @@ import Cybrom from "./Cybrom";
 // }
 
 // export default App;
+// import Auth from "./Auth";
+// import UnAuth from "./UnAuth";
+// import { useContext} from "react";
+// import { MyLoginContext } from "./LoginContext";
+
+// const App=()=>{
+//   const {user} = useContext(MyLoginContext);
+//   return(
+//     <>
+//     <h1>Login System</h1>
+//     {user.auth? <Auth/> : <UnAuth/>}
+//     </>
+//   )
+// }
+// export default App;
+
+// import { useRef } from "react";
+
+// const App = () => {
+//   const myRef = useRef();
+
+//   const display1 = () => {
+//     myRef.current.style.fontSize = "30px";
+//     myRef.current.style.borderRadius = "10px";
+//     myRef.current.style.border = "3px solid red";
+//     myRef.current.style.width = "30px";
+//     myRef.current.style.height = "70%";
+
+//   };
+
+//   const display2 = () => {
+//     myRef.current.style.color = "blue";
+//     myRef.current.style.fontWeight = "bold";
+//   };
+
+//   const display3 = () => {
+//     myRef.current.style.backgroundColor = "yellow";
+//     myRef.current.style.padding = "50px";
+//   };
+
+//   return (
+//     <>
+//       <button onClick={display1}>Style 1</button>
+//       <button onClick={display2}>Style 2</button>
+//       <button onClick={display3}>Style 3</button>
+//       <div ref={myRef}>Welcome To Cybrom</div>
+//     </>
+//   );
+// };
+
+// export default App;
+import { useRef, useState, useEffect } from "react"
 
 const App=()=>{
+  const [txtval, setTxtVal] = useState("");
+  useEffect(()=>{
+    myRef.current=myRef.current+1;
+  })
+
+  const myRef = useRef(0);
+  console.log(myRef.current);
+  
   return(
     <>
-    <h1>welcome to :</h1>
-    <Cybrom/>
+    Enter Name: <input type="text" value={txtval}  onChange={(e)=>{setTxtVal(e.target.value)}}/>
+    <h1>My Render Count:</h1>
     </>
   )
 }

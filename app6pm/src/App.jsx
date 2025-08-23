@@ -140,4 +140,40 @@
 // }
 // export default App;
 
+import { useReducer } from "react";
+const App=()=>{
+  const myMethod=(state, action)=>{
+    switch(action){
+      case"red":
+      return "red";
+      case "green":
+        return "green";
+        case "blue":
+          return "blue";
+          case "yellow":
+            return "yellow";
+            default :
+            return state;
 
+    }
+
+  }
+  const [color, dispatch] = useReducer(myMethod, "red")
+  return(
+    <>
+    <h1>My Color Program Using UseReducer</h1>
+    <button onClick={()=>{dispatch("red")}}>Red</button>
+    <button onClick={()=>{dispatch("green")}}>Green</button>
+    <button onClick={()=>{dispatch("blue")}}>Blue</button>
+    <button onClick={()=>{dispatch("yellow")}}>Yellow</button>
+    <div style =  {{
+      backgroundColor: color,
+          width: "300px",
+          height: "200px",
+          marginTop: "20px",
+          border: "2px solid black",}}>
+    </div>
+    </>
+  )
+}
+export default App;

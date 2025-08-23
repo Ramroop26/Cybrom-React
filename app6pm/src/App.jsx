@@ -89,22 +89,55 @@
 // };
 
 // export default App;
-import { useRef, useState, useEffect } from "react"
 
-const App=()=>{
-  const [txtval, setTxtVal] = useState("");
-  useEffect(()=>{
-    myRef.current=myRef.current+1;
-  })
 
-  const myRef = useRef(0);
-  console.log(myRef.current);
+// import { useRef, useState, useEffect } from "react"
+
+// const App=()=>{
+//   const [txtval, setTxtVal] = useState("");
+//   useEffect(()=>{
+//     myRef.current=myRef.current+1;
+//   })
+
+//   const myRef = useRef(0);
+//   console.log(myRef.current);
   
-  return(
-    <>
-    Enter Name: <input type="text" value={txtval}  onChange={(e)=>{setTxtVal(e.target.value)}}/>
-    <h1>My Render Count:</h1>
-    </>
-  )
-}
-export default App;
+//   return(
+//     <>
+//     Enter Name: <input type="text" value={txtval}  onChange={(e)=>{setTxtVal(e.target.value)}}/>
+//     <h1>My Render Count:</h1>
+//     </>
+//   )
+// }
+// export default App;
+
+// import { useReducer } from "react";
+
+// const App=()=>{
+//   const myMethod=(state, action)=>{
+//     switch(action){
+//       case "Increase":
+//         return state+1;
+//         case "Decrease":
+//           return state-1;
+//           default:
+//             return state;
+
+//     }
+//   }
+
+//   const [count, dispatch] = useReducer(myMethod, 0);
+//   return(
+//     <>
+//     <h1>My Counter Program Using useReducer</h1>
+//     <button onClick={()=>{dispatch("Increase")}}>Increment</button>
+
+//     <h1>Count: {count}</h1>
+//     <button onClick={()=>{dispatch("Decrease")}}>Decrement</button>
+//     </>
+//   )
+
+// }
+// export default App;
+
+

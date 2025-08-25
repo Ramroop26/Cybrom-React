@@ -111,69 +111,81 @@
 // }
 // export default App;
 
-import { useReducer } from "react";
-
-const App=()=>{
-  const myMethod=(state, action)=>{
-    switch(action){
-      case "Increase":
-        return state+1;
-        case "Decrease":
-          return state-1;
-          default:
-            return state;
-
-    }
-  }
-
-  const [count, dispatch] = useReducer(myMethod, 0);
-  return(
-    <>
-    <h1>My Counter Program Using useReducer</h1>
-    <button onClick={()=>{dispatch("Increase")}}>Increment</button>
-
-    <h1>Count: {count}</h1>
-    <button onClick={()=>{dispatch("Decrease")}}>Decrement</button>
-    </>
-  )
-
-}
-export default App;
-
 // import { useReducer } from "react";
+
 // const App=()=>{
 //   const myMethod=(state, action)=>{
 //     switch(action){
-//       case"red":
-//       return "red";
-//       case "green":
-//         return "green";
-//         case "blue":
-//           return "blue";
-//           case "yellow":
-//             return "yellow";
-//             default :
+//       case "Increase":
+//         return state+1;
+//         case "Decrease":
+//           return state-1;
+//           default:
 //             return state;
 
 //     }
-
 //   }
-//   const [color, dispatch] = useReducer(myMethod, "red")
+
+//   const [count, dispatch] = useReducer(myMethod, 0);
 //   return(
 //     <>
-//     <h1>My Color Program Using UseReducer</h1>
-//     <button onClick={()=>{dispatch("red")}}>Red</button>
-//     <button onClick={()=>{dispatch("green")}}>Green</button>
-//     <button onClick={()=>{dispatch("blue")}}>Blue</button>
-//     <button onClick={()=>{dispatch("yellow")}}>Yellow</button>
-//     <div style =  {{
-//       backgroundColor: color,
-//           width: "300px",
-//           height: "200px",
-//           marginTop: "20px",
-//           border: "2px solid black",}}>
-//     </div>
+//     <h1>My Counter Program Using useReducer</h1>
+//     <button onClick={()=>{dispatch("Increase")}}>Increment</button>
+
+//     <h1>Count: {count}</h1>
+//     <button onClick={()=>{dispatch("Decrease")}}>Decrement</button>
+//     </>
+//   )
+
+// }
+// export default App;
+
+// useMemo used to Memorized value Dalta hai or Performance  
+// import { useState } from "react";
+// import { useMemo } from "react";
+// const App=()=>{
+//   const[add, setAdd] = useState(0);
+//   const [sub, setSub] = useState(100);
+//   const  myMultiVal = useMemo(myMulti, [add]);
+
+//   function myMulti(){
+//     console.log("*****");
+//     return add*2;
+//   }
+
+//   return(
+//     <>
+//     <h1>My App</h1>
+//     <h1>My Multiplication : {myMultiVal} </h1>
+//     <button onClick={()=>{setAdd(add+1)}}>Addition</button>
+//     <h2>Addition : {add}</h2>
+//     <button onClick={()=>{setSub(sub-1)}}>Substraction</button>
+//     <h2>Substraction : {sub}</h2>
 //     </>
 //   )
 // }
 // export default App;
+
+import { useState } from "react";
+import { useMemo } from "react";
+
+const App=()=>{
+  const [name, setName] = useState("");
+  const [num, setNum] = useState("");
+  const myVal = useMemo(MyFunction, [num]);
+  function MyFunction(){
+    for(var i=0; i<1000000; i++){}
+    return num*2;
+  }
+  return(
+    <>
+<h1>My App</h1>
+Select Number : <input type="number" value={num} onChange={(e)=>{setNum(e.target.value)}} /> <br /><br />
+Enter Name : <input type="text"  value={name} onChange={(e)=>{setName(e.target.value)}}/> <br /> <br />
+<h2>My Thousand : {myVal}</h2>
+    </>
+  )
+}
+
+export default App;
+

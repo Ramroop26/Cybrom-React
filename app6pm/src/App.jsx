@@ -140,52 +140,52 @@
 // }
 // export default App;
 
-// useMemo used to Memorized value Dalta hai or Performance  
-// import { useState } from "react";
-// import { useMemo } from "react";
-// const App=()=>{
-//   const[add, setAdd] = useState(0);
-//   const [sub, setSub] = useState(100);
-//   const  myMultiVal = useMemo(myMulti, [add]);
-
-//   function myMulti(){
-//     console.log("*****");
-//     return add*2;
-//   }
-
-//   return(
-//     <>
-//     <h1>My App</h1>
-//     <h1>My Multiplication : {myMultiVal} </h1>
-//     <button onClick={()=>{setAdd(add+1)}}>Addition</button>
-//     <h2>Addition : {add}</h2>
-//     <button onClick={()=>{setSub(sub-1)}}>Substraction</button>
-//     <h2>Substraction : {sub}</h2>
-//     </>
-//   )
-// }
-// export default App;
-
+//useMemo used to Memorized value Dalta hai or Performance  
 import { useState } from "react";
 import { useMemo } from "react";
-
 const App=()=>{
-  const [name, setName] = useState("");
-  const [num, setNum] = useState("");
-  const myVal = useMemo(MyFunction, [num]);
-  function MyFunction(){
-    for(var i=0; i<1000000; i++){}
-    return num*2;
+  const[add, setAdd] = useState(0);
+  const [sub, setSub] = useState(100);
+  const  myMultiVal = useMemo(myMulti, [add]);
+
+  function myMulti(){
+    console.log("*****");
+    return add*2;
   }
+
   return(
     <>
-<h1>My App</h1>
-Select Number : <input type="number" value={num} onChange={(e)=>{setNum(e.target.value)}} /> <br /><br />
-Enter Name : <input type="text"  value={name} onChange={(e)=>{setName(e.target.value)}}/> <br /> <br />
-<h2>My Thousand : {myVal}</h2>
+    <h1>My App</h1>
+    <h1>My Multiplication : {myMultiVal} </h1>
+    <button onClick={()=>{setAdd(add+1)}}>Addition</button>
+    <h2>Addition : {add}</h2>
+    <button onClick={()=>{setSub(sub-1)}}>Substraction</button>
+    <h2>Substraction : {sub}</h2>
     </>
   )
 }
-
 export default App;
+
+// import { useState } from "react";
+// import { useMemo } from "react";
+
+// const App=()=>{
+//   const [name, setName] = useState("");
+//   const [num, setNum] = useState("");
+//   const myVal = useMemo(MyFunction, [num]);
+//   function MyFunction(){
+//     for(var i=0; i<1000000; i++){}
+//     return num*2;
+//   }
+//   return(
+//     <>
+// <h1>My App</h1>
+// Select Number : <input type="number" value={num} onChange={(e)=>{setNum(e.target.value)}} /> <br /><br />
+// Enter Name : <input type="text"  value={name} onChange={(e)=>{setName(e.target.value)}}/> <br /> <br />
+// <h2>My Thousand : {myVal}</h2>
+//     </>
+//   )
+// }
+
+// export default App;
 

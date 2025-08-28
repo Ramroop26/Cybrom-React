@@ -148,24 +148,46 @@
 // export default App;
 
 
-import { useState } from "react";
-import { useMemo } from "react";
+// import { useState } from "react";
+// import { useMemo } from "react";
+// const App=()=>{
+//   const [name, setName] = useState("");
+//   const [num, setNum] = useState("");
+//   const myVal = useMemo(MyFunction, [num]);
+//   function MyFunction(){
+//     for(var i=0; i<1000000; i++){}
+//     return num*2;
+//   }
+//   return(
+//     <>
+// <h1>My App</h1>
+// Select Number : <input type="number" value={num} onChange={(e)=>{setNum(e.target.value)}} /> <br /><br />
+// Enter Name : <input type="text"  value={name} onChange={(e)=>{setName(e.target.value)}}/> <br /> <br />
+// <h2>My Thousand : {myVal}</h2>
+//     </>
+//   )
+// }
+// export default App;
+
+import {useSelector, useDispatch} from "react-redux";
+import { increment, decrement } from "./counterSlice";
+
 const App=()=>{
-  const [name, setName] = useState("");
-  const [num, setNum] = useState("");
-  const myVal = useMemo(MyFunction, [num]);
-  function MyFunction(){
-    for(var i=0; i<1000000; i++){}
-    return num*2;
-  }
+  const mycount = useSelector(state=>state.mycounter.count);
+  const dispatch = useDispatch();
+
   return(
     <>
-<h1>My App</h1>
-Select Number : <input type="number" value={num} onChange={(e)=>{setNum(e.target.value)}} /> <br /><br />
-Enter Name : <input type="text"  value={name} onChange={(e)=>{setName(e.target.value)}}/> <br /> <br />
-<h2>My Thousand : {myVal}</h2>
+    <h1>Welcome to My App</h1>
+    <button onClick={()=>{dispatch(increment())}}>Increment</button>
+    <h1>Count:{mycount}</h1>
+    <button onClick={()=>{dispatch(decrement())}}>Decrement</button>
     </>
   )
 }
+
+
 export default App;
+
+
 

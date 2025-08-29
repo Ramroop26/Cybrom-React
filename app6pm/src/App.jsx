@@ -169,25 +169,45 @@
 // }
 // export default App;
 
-import {useSelector, useDispatch} from "react-redux";
-import { increment, decrement } from "./counterSlice";
+// import {useSelector, useDispatch} from "react-redux";
+// import { increment, decrement } from "./counterSlice";
+// const App=()=>{
+//   const mycount = useSelector(state=>state.mycounter.count);
+//   const dispatch = useDispatch();
+//   return(
+//     <>
+//     <h1>Welcome to My App</h1>
+//     <button onMouseOver={()=>{dispatch(increment())}}>Increment</button>
+//     <h1>Count:{mycount}</h1>
+//     <button onMouseOver={()=>{dispatch(decrement())}}>Decrement</button>
+//     </>
+//   )
+// }
+// export default App;
 
+import { useDispatch, useSelector } from "react-redux";
+import {colorChange,Blue, Green, Yellow} from "./colorSlice";
 const App=()=>{
-  const mycount = useSelector(state=>state.mycounter.count);
+  const bgcolor = useSelector(state=>state.mycolor.color);
   const dispatch = useDispatch();
-
   return(
     <>
-    <h1>Welcome to My App</h1>
-    <button onClick={()=>{dispatch(increment())}}>Increment</button>
-    <h1>Count:{mycount}</h1>
-    <button onClick={()=>{dispatch(decrement())}}>Decrement</button>
+    <h1>Welcome!</h1>
+    <button onClick={()=>{dispatch(colorChange())}}>Red</button>
+    <button onClick={()=>{dispatch(Blue())}}>Blue</button>
+    <button onClick={()=>{dispatch(Green())}}>green</button>
+    <button onClick={()=>{dispatch(Yellow())}}>yellow</button>
+
+
+
+    <div style={{width:"500px", height:"200px", backgroundColor:bgcolor}}>
+
+    </div>
     </>
   )
 }
-
-
 export default App;
+
 
 
 

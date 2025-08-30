@@ -185,29 +185,47 @@
 // }
 // export default App;
 
-import { useDispatch, useSelector } from "react-redux";
-import {colorChange,Blue, Green, Yellow} from "./colorSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import {colorChange,Blue,Green,Yellow} from "./colorSlice";
+// const App=()=>{
+//   const bgcolor = useSelector(state=>state.mycolor.color);
+//   const dispatch = useDispatch();
+//   return(
+//     <>
+//     <h1>Welcome!</h1>
+//     <button onClick={()=>{dispatch(colorChange())}}>Red</button>
+//     <button onClick={()=>{dispatch(Blue())}}>Blue</button>
+//     <button onClick={()=>{dispatch(Green())}}>green</button>
+//     <button onClick={()=>{dispatch(Yellow())}}>yellow</button>
+
+
+
+//     <div style={{width:"500px", height:"200px", backgroundColor:bgcolor}}>
+
+//     </div>
+//     </>
+//   )
+// }
+// export default App;
+
+import { useSelector, useDispatch } from "react-redux";
+import {colorIn} from "./colorSlice";
 const App=()=>{
-  const bgcolor = useSelector(state=>state.mycolor.color);
+  const  bgcolor = useSelector(state=>state.mycolor.color);
   const dispatch = useDispatch();
   return(
     <>
     <h1>Welcome!</h1>
-    <button onClick={()=>{dispatch(colorChange())}}>Red</button>
-    <button onClick={()=>{dispatch(Blue())}}>Blue</button>
-    <button onClick={()=>{dispatch(Green())}}>green</button>
-    <button onClick={()=>{dispatch(Yellow())}}>yellow</button>
-
-
-
-    <div style={{width:"500px", height:"200px", backgroundColor:bgcolor}}>
+    Enter Color: <input type="text" />
+    <button onClick={()=>{dispatch(colorIn())}}>Click Me</button>
+    <br /> <br />
+    <div style={{width:"300px", height:"200px", backgroundColor:bgcolor}}>
 
     </div>
     </>
+
   )
 }
 export default App;
-
-
 
 

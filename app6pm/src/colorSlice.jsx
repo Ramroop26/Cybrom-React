@@ -26,16 +26,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const colorSlice = createSlice({
-    name:"mycolor",
-    initialState:{
-        color:"green"
+  name: "mycolor",
+  initialState: { color: "white" },
+  reducers: {
+    colorIn: (state, action) => {
+      state.color = action.payload; 
     },
-    reducers:{
-        colorIn:(state)=>{
-            state.color="red";
-        }
-    }
-})
+  },
+});
 
+export const { colorIn } = colorSlice.actions;
 export default colorSlice.reducer;
 

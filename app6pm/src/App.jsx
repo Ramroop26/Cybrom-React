@@ -256,17 +256,43 @@
 
 // export default App;
 
+// import { useState } from "react";
+// import {useDispatch, useSelector} from "react-redux";
+// import { addTask } from "./todoSlice";
 
-import { useState } from "react";
-const App=()=>{
-  const [txtval, setTxtVal] = useState("")
-  return(
-    <>
-    <h1>To Do App:</h1>
-    <hr />
-    Enter Your Task: <input type="text"  value={txtval} onChange={(e)=>{setTxtVal(e.target.value)}}/>
-    <button>Add</button>
-    </>
-  )
-}
-export default App;
+
+// const App=()=>{
+//   const [txtval, setTxtVal] = useState("");
+//   const myTask = useSelector(state=>state.mytodo.task);
+//   const dispatch = useDispatch();
+  
+//   let Sno=0;
+//   const ans = myTask.map((key)=>{
+//   Sno++;
+//   return(
+//     <>
+//     <tr>
+//       <td>{Sno}</td>
+//       <td>{key.work}</td>
+//     </tr>
+//     </>
+//   )
+// })  
+//   return(
+//     <>
+//     <h1>To Do App:</h1>
+//     <hr />
+//     Enter Your Task: <input type="text"  value={txtval} onChange={(e)=>{setTxtVal(e.target.value)}}/>
+//     <button onClick={()=>{dispatch(addTask({id:Date.now(),work:txtval}))}}>Add</button>
+//     <hr />
+//     <table>
+//       <tr>
+//         <th>Sno</th>
+//         <th>You Task</th>
+//       </tr>
+//       {ans}
+//     </table>
+//     </>
+//   )
+// }
+// export default App;

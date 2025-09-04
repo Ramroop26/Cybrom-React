@@ -208,87 +208,88 @@
 // }
 // export default App;
 
-// import { useSelector, useDispatch } from "react-redux";
-// import { useState } from "react";
-// import { colorIn } from "./colorSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { colorIn } from "./colorSlice";
 
-// const App = () => {
-//   const bgcolor = useSelector((state) => state.mycolor.color);
-//   const dispatch = useDispatch();
-//   const [inputColor, setInputColor] = useState("");
+const App = () => {
+  const bgcolor = useSelector((state) => state.mycolor.color);
+  const dispatch = useDispatch();
+  const [inputColor, setInputColor] = useState("");
 
-//   return (
-//     <>
-//       <h1>Welcome! Color: red,
-//         blue,  green,
-//         yellow, grey,
-//         white, black,
-//         pink,  orange,
-//         aliceblue, aqua,
-//         aquamarine, azure,
-//         beige, chartreuse,
-//         chocolate, coral,
-//         cornflowerblue, cyan,
-//         firebrick, forestgreen,
-//         fuchsia, indigo,
-//         khaki, lavender,
-//         lime, magenta,
-//         maroon, midnightblue,
-//         moccasin, plum,
-//         salmon, silver,
-//         skyblue, slategrey,
-//         springgreen, steelblue,
-//         wheat, purple,
-//         antiquewhite, bisque,
-//         blueviolet, burlywood,
-//         cadetblue, cornsilk,
-//         crimson, darkblue, darkcyan</h1>
-//       Enter Color: <input type="text" value={inputColor} onChange={(e) => setInputColor(e.target.value)} />
-//       <button onClick={() => dispatch(colorIn(inputColor))}>Click Me</button>
-//       <br /> <br />
-//       <div
-//         style={{ width: "100%", height: "200px", backgroundColor: bgcolor, border: "2px solid firebrick", boxShadow: "2 0 0 black",  }}>
+  return (
+    <>
+      <h1>Welcome! Color: red,
+        blue,  green,
+        yellow, grey,
+        white, black,
+        pink,  orange,
+        aliceblue, aqua,
+        aquamarine, azure,
+        beige, chartreuse,
+        chocolate, coral,
+        cornflowerblue, cyan,
+        firebrick, forestgreen,
+        fuchsia, indigo,
+        khaki, lavender,
+        lime, magenta,
+        maroon, midnightblue,
+        moccasin, plum,
+        salmon, silver,
+        skyblue, slategrey,
+        springgreen, steelblue,
+        wheat, purple,
+        antiquewhite, bisque,
+        blueviolet, burlywood,
+        cadetblue, cornsilk,
+        crimson, darkblue, darkcyan</h1>
+      Enter Color: <input type="text" value={inputColor} onChange={(e) => setInputColor(e.target.value)} />
+      <button onClick={() => dispatch(colorIn(inputColor))}>Click Me</button>
+      <br /> <br />
+      <div
+        style={{ width: "100%", height: "200px", backgroundColor: bgcolor, border: "2px solid firebrick", boxShadow: "2 0 0 black",  }}>
 
-//       </div>
-//     </>
-//   );
-// };
+      </div>
+    </>
+  );
+};
 
-// export default App;
+export default App;
 
-// import { useState } from "react";
-// import {useDispatch, useSelector} from "react-redux";
+// import { useState } from "react"
+// import { useDispatch, useSelector} from "react-redux";
 // import { addTask } from "./todoSlice";
 
-
 // const App=()=>{
-//   const [txtval, setTxtVal] = useState("");
-//   const myTask = useSelector(state=>state.mytodo.task);
-//   const dispatch = useDispatch();
-  
-//   let Sno=0;
-//   const ans = myTask.map((key)=>{
-//   Sno++;
+//   const [txtval, setTxtVal]= useState("");
+//   const myTask= useSelector(state=>state.mytodo.task)
+//   const dispatch=useDispatch();
+
+//   let sno=0;
+//   const ans= myTask.map((key)=>{
+//     sno++;
+//     return(
+//       <>
+//       <tr>
+//         <td>{sno}</td>
+//         <td>{key.work}</td>
+//       </tr>
+//       </>
+//     )
+//   })
 //   return(
 //     <>
-//     <tr>
-//       <td>{Sno}</td>
-//       <td>{key.work}</td>
-//     </tr>
-//     </>
-//   )
-// })  
-//   return(
-//     <>
-//     <h1>To Do App:</h1>
+//     <h1>To do App:</h1>
 //     <hr />
-//     Enter Your Task: <input type="text"  value={txtval} onChange={(e)=>{setTxtVal(e.target.value)}}/>
+//     Enter Your Task: <input type="text" value={txtval}
+//     onChange={(e)=>{setTxtVal(e.target.value)}} />
 //     <button onClick={()=>{dispatch(addTask({id:Date.now(),work:txtval}))}}>Add</button>
+
 //     <hr />
 //     <table>
 //       <tr>
-//         <th>Sno</th>
-//         <th>You Task</th>
+//         <th> Sno.</th>
+//         <th> your Task</th>
 //       </tr>
 //       {ans}
 //     </table>

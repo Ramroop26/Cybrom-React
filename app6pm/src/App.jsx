@@ -258,12 +258,25 @@
 // src/App.jsx
 import { useState } from "react"
 import { useDispatch, useSelector} from "react-redux";
-import { addTask, taskComplete, taskDelete, taskInComplete } from "./todoSlice";
+import { addTask, editTaskSave, taskComplete, taskDelete, taskInComplete } from "./todoSlice";
 
 const App=()=>{
   const [txtval, setTxtVal]= useState("");
+  const [btnStatus, setBtnStatus] = useState(true);
+  const [myid, setMyId] = useState("");
   const myTask= useSelector(state=>state.mytodo.task);
+  console.log(myTask);
   const dispatch=useDispatch();
+  const taskEdit=(id, work)=>{
+    setMyId(id)
+    setTxtVal(work);
+    setBtnStatus(false);
+  }
+  const myEditSave=()=>{
+    dispatch(editTaskSave({id:myid, newTask:txtval}))
+    setBtnStatus(true);
+    setTxtVal("");
+  }
 
   let sno=0;
   const ans= myTask.map((key)=>{
@@ -288,6 +301,9 @@ const App=()=>{
         <td>
           <button onClick={()=>{dispatch(taskInComplete({id:key.id}))}}>InComplete</button>
         </td>
+        <td>
+          <button onClick={()=>{taskEdit(key.id, key.work)}}>Edit</button>
+        </td>
       </tr>
       </>
     )
@@ -298,13 +314,22 @@ const App=()=>{
     <hr />
     Enter Your Task: <input type="text" value={txtval}
     onChange={(e)=>{setTxtVal(e.target.value)}} />
+
+    {btnStatus ? (<>
+    
+   
     <button onClick={()=>{dispatch(addTask({id:Date.now(),work:txtval, status:false}))}}>Add</button>
+    </>) : (<>
+    <button onClick={myEditSave}>Edit Save</button>
+
+       </>)}
 
     <hr />
     <table>
       <tr>
         <th> Sno.</th>
         <th> your Task</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>

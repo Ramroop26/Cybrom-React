@@ -19,6 +19,8 @@
 
 
 
+
+
 // import Cybrom1 from "./Cybrom1";
 // const App=()=>{
 //   return(
@@ -256,85 +258,118 @@
 
 // export default App;
 // src/App.jsx
-import { useState } from "react"
-import { useDispatch, useSelector} from "react-redux";
-import { addTask, editTaskSave, taskComplete, taskDelete, taskInComplete } from "./todoSlice";
+// import { useState } from "react"
+// import { useDispatch, useSelector} from "react-redux";
+// import { addTask, editTaskSave, taskComplete, taskDelete, taskInComplete } from "./todoSlice";
 
-const App=()=>{
-  const [txtval, setTxtVal]= useState("");
-  const [btnStatus, setBtnStatus] = useState(true);
-  const [myid, setMyId] = useState("");
-  const myTask= useSelector(state=>state.mytodo.task);
-  console.log(myTask);
-  const dispatch=useDispatch();
-  const taskEdit=(id, work)=>{
-    setMyId(id)
-    setTxtVal(work);
-    setBtnStatus(false);
-  }
-  const myEditSave=()=>{
-    dispatch(editTaskSave({id:myid, newTask:txtval}))
-    setBtnStatus(true);
-    setTxtVal("");
-  }
+// const App=()=>{
+//   const [txtval, setTxtVal]= useState("");
+//   const [btnStatus, setBtnStatus] = useState(true);
+//   const [myid, setMyId] = useState("");
+//   const myTask= useSelector(state=>state.mytodo.task);
+//   console.log(myTask);
+//   const dispatch=useDispatch();
+//   const taskEdit=(id, work)=>{
+//     setMyId(id)
+//     setTxtVal(work);
+//     setBtnStatus(false);
+//   }
+//   const myEditSave=()=>{
+//     dispatch(editTaskSave({id:myid, newTask:txtval}))
+//     setBtnStatus(true);
+//     setTxtVal("");
+//   }
 
-  let sno=0;
-  const ans= myTask.map((key)=>{
-    sno++;
-    return(
-      <>
-      <tr>
-        <td>{sno}</td>
-        <td>
-          {key.status ? (<>
-          <span style={{color:'red', textDecoration:'line-through'}}> {key.work}</span>
-          </>) : (<>
-          {key.work}
-          </>)}
-        </td>
-        <td>
-          <button onClick={()=>{dispatch(taskDelete({id:key.id}))}}>Delete</button>
-        </td>
-        <td>
-          <button onClick={()=>{dispatch(taskComplete({id:key.id}))}}>Complete</button>
-        </td>
-        <td>
-          <button onClick={()=>{dispatch(taskInComplete({id:key.id}))}}>InComplete</button>
-        </td>
-        <td>
-          <button onClick={()=>{taskEdit(key.id, key.work)}}>Edit</button>
-        </td>
-      </tr>
-      </>
-    )
-  })
-  return(
-    <>
-    <h1>To do App:</h1>
-    <hr />
-    Enter Your Task: <input type="text" value={txtval}
-    onChange={(e)=>{setTxtVal(e.target.value)}} />
+//   let sno=0;
+//   const ans= myTask.map((key)=>{
+//     sno++;
+//     return(
+//       <>
+//       <tr>
+//         <td>{sno}</td>
+//         <td>
+//           {key.status ? (<>
+//           <span style={{color:'red', textDecoration:'line-through'}}> {key.work}</span>
+//           </>) : (<>
+//           {key.work}
+//           </>)}
+//         </td>
+//         <td>
+//           <button onClick={()=>{dispatch(taskDelete({id:key.id}))}}>Delete</button>
+//         </td>
+//         <td>
+//           <button onClick={()=>{dispatch(taskComplete({id:key.id}))}}>Complete</button>
+//         </td>
+//         <td>
+//           <button onClick={()=>{dispatch(taskInComplete({id:key.id}))}}>InComplete</button>
+//         </td>
+//         <td>
+//           <button onClick={()=>{taskEdit(key.id, key.work)}}>Edit</button>
+//         </td>
+//       </tr>
+//       </>
+//     )
+//   })
+//   return(
+//     <>
+//     <h1>To do App:</h1>
+//     <hr />
+//     Enter Your Task: <input type="text" value={txtval}
+//     onChange={(e)=>{setTxtVal(e.target.value)}} />
 
-    {btnStatus ? (<>
+//     {btnStatus ? (<>
     
    
-    <button onClick={()=>{dispatch(addTask({id:Date.now(),work:txtval, status:false}))}}>Add</button>
-    </>) : (<>
-    <button onClick={myEditSave}>Edit Save</button>
+//     <button onClick={()=>{dispatch(addTask({id:Date.now(),work:txtval, status:false}))}}>Add</button>
+//     </>) : (<>
+//     <button onClick={myEditSave}>Edit Save</button>
 
-       </>)}
+//        </>)}
 
-    <hr />
-    <table>
-      <tr>
-        <th> Sno.</th>
-        <th> your Task</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      {ans}
-    </table>
+//     <hr />
+//     <table>
+//       <tr>
+//         <th> Sno.</th>
+//         <th> your Task</th>
+//         <th></th>
+//         <th></th>
+//         <th></th>
+//       </tr>
+//       {ans}
+//     </table>
+//     </>
+//   )
+// }
+// export default App;
+
+
+import { useState } from "react";
+import axios from "axios";
+const App=()=>{
+  const [image, setImage] =  useState("");
+
+  const handleInputImage=(e)=>{
+    setImage(e.target.files[0]);
+
+  }
+
+  const handleSubmit=async()=>{
+    const formData = new FormData();
+   formData.append("file", image);
+    formData.append("upload_preset", "image1");
+    const response = await axios.post("https://api.cloudinary.com/v1_1/dkm5xgamv/image/upload", formData);
+    console.log(response.data);
+    console.log(response.data.url);
+    document.getElementById("myimg").src=response.data.url;
+
+  }
+  return(
+    <>
+
+<h1>Upload Image</h1>
+Upload Image: <input type="file"  onChange={handleInputImage} />
+<button onClick={handleSubmit}>Upload !</button>
+<img  id="myimg"/>
     </>
   )
 }

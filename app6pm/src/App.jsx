@@ -35,20 +35,20 @@
 
 
 
-import Auth from "./Auth";
-import UnAuth from "./UnAuth";
-import { useContext} from "react";
-import { MyLoginContext } from "./LoginContext";
-const App=()=>{
-  const {user} = useContext(MyLoginContext);
-  return(
-    <>
-    <h1>Login System</h1>
-    {user.auth? <Auth/> : <UnAuth/>}
-    </>
-  )
-}
-export default App;
+// import Auth from "./Auth";
+// import UnAuth from "./UnAuth";
+// import { useContext} from "react";
+// import { MyLoginContext } from "./LoginContext";
+// const App=()=>{
+//   const {user} = useContext(MyLoginContext);
+//   return(
+//     <>
+//     <h1>Login System</h1>
+//     {user.auth? <Auth/> : <UnAuth/>}
+//     </>
+//   )
+// }
+// export default App;
 
 
 // import { useRef } from "react";
